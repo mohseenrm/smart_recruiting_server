@@ -21,6 +21,11 @@ def handle_request(data, role):
 	else:
 		val = JobSeeker.objects.create(details=data)
 		val.save()
+	return {
+            'success': True,
+            'responseData': 'Recorded data',
+            'status': 200
+            }
     except Exception as e:
         app.logger.debug(e)
         return {
