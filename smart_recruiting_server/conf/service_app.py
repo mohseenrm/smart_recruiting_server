@@ -15,10 +15,7 @@ from smart_recruiting_server.conf.config_logger_setup import setup_config_logger
 from smart_recruiting_server.session.interfaces import DBInterface
 from smart_recruiting_server.service_apis.uservalidation import UserValidation
 from smart_recruiting_server.service_apis.usercreation import UserCreation
-from smart_recruiting_server.service_apis.questionnaires import Questionnaires
-from smart_recruiting_server.service_apis.questions import Questions
 from smart_recruiting_server.service_apis.answers import Answers
-from smart_recruiting_server.service_apis.feedbackquestionnaire import FeedbackQuestionnaire
 from flask.ext.cors import CORS
  
 close_old_connections()
@@ -37,10 +34,7 @@ app.logger.info("Setting up Resources")
 
 api.add_resource(UserCreation, '/userservice/create/')
 api.add_resource(UserValidation,'/userservice/uservalidation/')
-api.add_resource(Questionnaires,'/questionnaire/qlists/')
-api.add_resource(Questions,'/questionnaire/<string:questionnaire_id>/')
-api.add_resource(Answers,'/questionnaire/answers/')
-api.add_resource(FeedbackQuestionnaire,'/questionnaire/flists/')
+api.add_resource(Answers,'/questionnaire/<role>')
 
 app.logger.info("Resource setup done")
 
